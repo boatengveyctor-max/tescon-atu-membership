@@ -1,0 +1,17 @@
+Options -Indexes
+
+# Deny direct requests for repository metadata; Apache otherwise serves dotfiles.
+RedirectMatch 404 (?:^|/)\.git(?:/|$)
+
+<FilesMatch "^(schema\.sql|\.env(?:\..*)?|\.gitignore)$">
+    Require all denied
+</FilesMatch>
+
+Header setifempty X-Content-Type-Options "nosniff"
+Header setifempty X-Frame-Options "DENY"
+Header setifempty Referrer-Policy "strict-origin-when-cross-origin"
+# Tailwind CDN requires 'unsafe-inline' for injected <style> blocks.
+# img-src allows https: for leader profile photos stored on external hosts.
+Header setifempty Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data: blob:; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+# HSTS: only sent over HTTPS connections (env=HTTPS is set by Apache for SSL).
+Header setifempty Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
