@@ -1,3 +1,6 @@
+# TESCON-ATU
+This repository holds everything belonging to TESCON-ATU 
+
 # TESCON Membership and Management System
 
 A PHP and MySQL application for TESCON membership applications, member administration, audit records, and public leadership profiles.
