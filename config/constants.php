@@ -9,10 +9,10 @@ $appBasePath = $scriptName === '' ? '' : dirname(dirname($scriptName));
 $appBasePath = $appBasePath === '/' || $appBasePath === '.' ? '' : rtrim($appBasePath, '/');
 define('APP_BASE_URL', $appBasePath);
 
-define('DB_HOST', getenv('DB_HOST') ?: 'sql200.infinityfree.com');
-define('DB_NAME', getenv('DB_NAME') ?: 'if0_43376513_tescon_membership');
-define('DB_USER', getenv('DB_USER') ?: 'if0_43376513');
-define('DB_PASS', getenv('DB_PASS') ?: 'Uxx3mIy59PN5t');
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'tescon_membership');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
 
 const SESSION_IDLE_TIMEOUT = 1800; 
 const PAGE_SIZE = 20; 
